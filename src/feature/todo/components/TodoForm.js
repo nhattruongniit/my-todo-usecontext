@@ -10,7 +10,7 @@ import { useStateTodo } from "../context/TodoContext";
 import { TODO_SUBMIT } from "../redux/TodoForm/constant";
 
 export const TodoForm = () => {
-  const [, dispatch] = useStateTodo();
+  const { dispatcher } = useStateTodo();
   const [value, setValue] = useState("");
 
   const handleOnChange = func => event => {
@@ -20,7 +20,7 @@ export const TodoForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch({
+    dispatcher({
       type: TODO_SUBMIT,
       payload: {
         id: `${Date.now()}-${Math.random()}`,

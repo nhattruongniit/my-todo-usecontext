@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import { useStateTodo } from "../context/TodoContext";
 
 export const TodoList = () => {
-  const [state] = useStateTodo();
+  const { state } = useStateTodo();
 
   console.log("============TodoList=========", state);
 
