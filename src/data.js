@@ -1,4 +1,7 @@
 export const initialData = {
-  todo: [],
-  profile: []
+  app: {},
+  todo: {
+    data: []
+  },
+  profile: {}
 };

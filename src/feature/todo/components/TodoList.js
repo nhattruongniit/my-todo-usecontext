@@ -6,17 +6,19 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
 
 // contexts
-import { useStateTodo } from "../context/TodoContext";
-import { TODO_COMPLETED, TODO_DELETED } from "../redux/constant";
+import { useStateTodo } from "../context/todoContext";
+import { TODO_COMPLETED, TODO_DELETED } from "../reducer/todoReducer";
 
 export const TodoList = () => {
   const {
-    state: { todo },
+    state: {
+      todo: { data }
+    },
     dispatcher
   } = useStateTodo();
 
   const handleCompleteTodo = index => () => {
-    const newTodo = [...todo];
+    const newTodo = [...data];
     newTodo[index].completed = !newTodo[index].completed;
     dispatcher({
       type: TODO_COMPLETED,
@@ -25,14 +27,14 @@ export const TodoList = () => {
   };
 
   const handleDeleteTodo = index => () => {
-    const newTodo = todo.filter((_, i) => i !== index);
+    const newTodo = data.filter((_, i) => i !== index);
     dispatcher({
       type: TODO_DELETED,
       payload: newTodo
     });
   };
 
-  return todo.map((item, index) => {
+  return data.map((item, index) => {
     const { title, completed } = item;
 
     return (

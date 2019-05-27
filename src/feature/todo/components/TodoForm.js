@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-// contexts
-import { useStateTodo } from "../context/TodoContext";
+// reducer
+import { TODO_ADD } from "../reducer/todoReducer";
 
-// redux
-import { TODO_ADD } from "../redux/constant";
+// contexts
+import { useStateTodo } from "../context/todoContext";
 
 export const TodoForm = () => {
   const { dispatcher } = useStateTodo();
