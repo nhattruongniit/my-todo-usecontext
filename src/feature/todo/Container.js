@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { initialData } from "../../data";
 
@@ -14,10 +14,10 @@ import { reducer as todoReducer } from "./redux/reducer";
 export function Todo() {
   return (
     <TodoProvider state={initialData} reducer={todoReducer}>
-      <Fragment>
+      <>
         <TodoForm />
         <TodoList />
-      </Fragment>
+      </>
     </TodoProvider>
   );
 }

@@ -15,17 +15,17 @@ export const TodoList = () => {
     dispatcher
   } = useStateTodo();
 
-  const handleCompleteTodo = id => {
+  const handleCompleteTodo = index => () => {
     const newTodo = [...todo];
-    newTodo[id].completed = !newTodo[id].completed;
+    newTodo[index].completed = !newTodo[index].completed;
     dispatcher({
       type: TODO_COMPLETED,
       payload: newTodo
     });
   };
 
-  const handleDeleteTodo = id => {
-    const newTodo = todo.filter((_, index) => index !== id);
+  const handleDeleteTodo = index => () => {
+    const newTodo = todo.filter((_, i) => i !== index);
     dispatcher({
       type: TODO_DELETED,
       payload: newTodo
@@ -46,14 +46,14 @@ export const TodoList = () => {
             variant="contained"
             color="primary"
             className={`btn btn-${completed ? "completed" : "complete"}`}
-            onClick={() => handleCompleteTodo(index)}
+            onClick={handleCompleteTodo(index)}
           >
             {completed ? "Completed" : "Complete"}
           </Button>
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => handleDeleteTodo(index)}
+            onClick={handleDeleteTodo(index)}
           >
             Delete
           </Button>
