@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import { Todo } from "feature";
+import { Todo } from "../../feature";
 
 export function App() {
   return (

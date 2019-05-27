@@ -4,7 +4,8 @@ export const reducer = (state, { type, payload }) => {
   switch (type) {
     case TODO_SUBMIT: {
       return {
-        data: { ...state, payload }
+        ...state,
+        todo: [...state.todo, payload]
       };
     }
     default:

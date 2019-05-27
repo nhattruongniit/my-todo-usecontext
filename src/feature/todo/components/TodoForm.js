@@ -10,7 +10,7 @@ import { useStateTodo } from "../context/TodoContext";
 import { TODO_SUBMIT } from "../redux/TodoForm/constant";
 
 export const TodoForm = () => {
-  const [data, dispatch] = useStateTodo();
+  const [, dispatch] = useStateTodo();
   const [value, setValue] = useState("");
 
   const handleOnChange = func => event => {
@@ -18,12 +18,16 @@ export const TodoForm = () => {
     func(value);
   };
 
-  console.log("=============== todo form ==========", data);
   const handleSubmit = e => {
     e.preventDefault();
     dispatch({
       type: TODO_SUBMIT,
-      payload: value
+      payload: {
+        id: `${Date.now()}-${Math.random()}`,
+        title: value,
+        completed: false,
+        createAt: Date.now()
+      }
     });
   };
 

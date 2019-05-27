@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import { initialData } from "data";
+import { initialData } from "../../data";
 
 // components
 import { TodoForm, TodoList } from "./components";
