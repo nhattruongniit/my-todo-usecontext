@@ -9,11 +9,11 @@ import { TodoForm, TodoList } from "./components";
 import { TodoProvider } from "./context/TodoContext";
 
 // redux
-import { reducer as todoFormReducer } from "./redux/TodoForm/reducer";
+import { reducer as todoReducer } from "./redux/reducer";
 
 export function Todo() {
   return (
-    <TodoProvider state={initialData} reducer={todoFormReducer}>
+    <TodoProvider state={initialData} reducer={todoReducer}>
       <Fragment>
         <TodoForm />
         <TodoList />

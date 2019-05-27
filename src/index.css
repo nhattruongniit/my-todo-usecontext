@@ -22,6 +22,19 @@ code {
   margin-left: 10px;
 }
 
+.text-danger {
+  color: #f00;
+}
+
+.btn {
+  width: 120px;
+}
+
+.btn-completed {
+  background-color: #119c11 !important;
+  text-decoration: line-through;
+}
+
 @media (max-width: 768px) {
   .App {
     width: 100%;

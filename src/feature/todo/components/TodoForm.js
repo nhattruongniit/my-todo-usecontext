@@ -7,11 +7,17 @@ import Button from "@material-ui/core/Button";
 import { useStateTodo } from "../context/TodoContext";
 
 // redux
-import { TODO_SUBMIT } from "../redux/TodoForm/constant";
+import { TODO_ADD } from "../redux/constant";
 
 export const TodoForm = () => {
   const { dispatcher } = useStateTodo();
   const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
+
+  const resetInput = () => {
+    setValue("");
+    setError("");
+  };
 
   const handleOnChange = func => event => {
     const { value } = event.target;
@@ -20,8 +26,10 @@ export const TodoForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (!value) return setError(true);
+
     dispatcher({
-      type: TODO_SUBMIT,
+      type: TODO_ADD,
       payload: {
         id: `${Date.now()}-${Math.random()}`,
         title: value,
@@ -29,6 +37,7 @@ export const TodoForm = () => {
         createAt: Date.now()
       }
     });
+    resetInput();
   };
 
   return (
@@ -40,9 +49,10 @@ export const TodoForm = () => {
         onChange={handleOnChange(setValue)}
         value={value}
       />
+      {error && <div class="text-danger">Please enter text.</div>}
       <br />
       <Button type="submit" variant="contained" color="primary">
-        Submit
+        Add
       </Button>
     </form>
   );
