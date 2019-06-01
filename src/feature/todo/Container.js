@@ -9,10 +9,11 @@ import { useStateApp } from "../app/context/appContext";
 import { SAVE_TODO } from "../app/reducer/appReducer";
 
 export function Todo() {
-  const { state, dispatcher: dispatcherApp } = useStateApp();
+  const { state: stateApp, dispatcher: dispatcherApp } = useStateApp();
   const { state: stateTodo } = useStateTodo();
 
-  console.log("=================state of App============", state);
+  console.log("=================state of App============", stateApp);
+  console.log("=================state of todo============", stateTodo);
   const handleSaveTodoList = () => {
     dispatcherApp({
       type: SAVE_TODO,
@@ -26,7 +27,7 @@ export function Todo() {
       <TodoList />
       <br />
       <button type="button" onClick={handleSaveTodoList}>
-        Save Todo List in state Apps
+        Click & Open console log to view state os Apps takes todo list
       </button>
     </>
   );

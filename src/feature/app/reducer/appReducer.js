@@ -5,7 +5,7 @@ export const reducer = (state, { type, payload }) => {
     case SAVE_TODO: {
       return {
         ...state,
-        todo: {
+        app: {
           data: [...payload]
         }
       };
